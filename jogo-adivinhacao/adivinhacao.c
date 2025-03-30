@@ -6,15 +6,23 @@ int main() {
   printf("* Bem-vindo ao jogo de adivinhação *\n");
   printf("************************************\n");
 
-  int numerosecreto, chute, acertou;
+  int numerosecreto, chute, acertou, ganhou, tentativas;
   numerosecreto = 42;
-
+  ganhou = 0;
+  tentativas = 1;
+  
   for(int i = 1; i <= NUMERO_DE_TENTATIVAS; i++){
   
     printf("Qual é seu %do chute\n?", i);
   scanf("%d", &chute);
   printf("Você %do chutou o número %d!\n", i, chute);
 
+  if (chute < 0) {
+    printf("Você não pode chutar números negativos");
+    i--;
+    continue;
+  }
+  
   acertou = chute == numerosecreto;
   int maior = chute > numerosecreto;
   
